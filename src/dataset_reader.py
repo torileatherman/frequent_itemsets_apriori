@@ -13,14 +13,13 @@ def read_transactions(file_name: str) -> List[List[int]]:
     file_dir = path.dirname(__file__)   
     rel_path = f"../data/{file_name}"
     dataset_path = path.join(file_dir, rel_path)
-    print(dataset_path)
-    with open(dataset_path, 'r') as f:
-        print(f)
-        return [[int(x) for x in line.split()] for line in f]
-
+    with open(dataset_path) as f:
+        lines = f.readlines()
+        transactions = [set(map(int, line.strip().split(sep=' '))) for line in lines]
+        print('Data set is read.')
+    return transactions
 
 if __name__ == '__main__':
-    dataset_file = 'T10I4D100K.dat.html' 
-
+    dataset_file = 'T10I4D100K.dat'
     transactions = read_transactions(dataset_file)
-    print(transactions)
+
