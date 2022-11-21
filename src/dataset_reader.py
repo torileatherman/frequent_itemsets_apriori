@@ -1,7 +1,7 @@
-from typing import List
 from os import path
+from typing import List, Set
 
-def read_transactions(file_name: str) -> List[List[int]]:
+def read_transactions(file_name: str) -> List[Set[int]]:
 
     """Read transactions from file
     Args:
@@ -11,15 +11,11 @@ def read_transactions(file_name: str) -> List[List[int]]:
     """
     # Define the relative path to the zipped data
     file_dir = path.dirname(__file__)   
-    rel_path = f"../data/{file_name}"
+    rel_path = "../data/" + file_name
     dataset_path = path.join(file_dir, rel_path)
     with open(dataset_path) as f:
         lines = f.readlines()
         transactions = [set(map(int, line.strip().split(sep=' '))) for line in lines]
-        print('Data set is read.')
+        print('Data set is load.')
     return transactions
-
-if __name__ == '__main__':
-    dataset_file = 'T10I4D100K.dat'
-    transactions = read_transactions(dataset_file)
 
