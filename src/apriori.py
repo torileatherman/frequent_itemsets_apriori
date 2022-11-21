@@ -26,6 +26,7 @@ class Apriori():
                 item_to_support[frozenset([item])] += 1
 
         s_threshold_absolute = np.quantile(list(item_to_support.values()),self.s_threshold)
+        print(f'The support threshold is {s_threshold_absolute}')
         frequent_dict = dict(filter(lambda element: element[1] > s_threshold_absolute, item_to_support.items()))
         return frequent_dict
 
@@ -64,6 +65,7 @@ class Apriori():
 
         print(f'The average support is {np.mean(list(item_to_support.values())):.2f}')
         s_threshold_absolute = np.quantile(list(item_to_support.values()),self.s_threshold) # self.s_threshold*np.sum(list(item_to_support.values()))
+        print(f'The support threshold is {s_threshold_absolute}')
         frequent_dict = dict(filter(lambda element: element[1] > s_threshold_absolute, item_to_support.items()))
         return frequent_dict
     
