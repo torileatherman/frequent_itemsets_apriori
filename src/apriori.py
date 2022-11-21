@@ -111,7 +111,7 @@ class Apriori():
 
             if len(candidates) > 0:
                 # Get the frequent items 
-                new_frequent_items = self.filter_frequent_item_sets(candidates, k_itemsets = k)
+                new_frequent_items = self.filter_frequent_item_sets(candidates)
                 print(f"Frequent items = {len(new_frequent_items)}\n -------------------------------------")
                 
                 # Update the current frequent item set (only keys)
